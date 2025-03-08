@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello World!")
 
-	computedConstants()
+	formatedString()
 }
 
 func basicVariables() {
@@ -53,4 +53,13 @@ func computedConstants() {
 	const secondsInHour = secondsInMinute * minutesInHour
 
 	fmt.Println("number of seconds in an hour:", secondsInHour)
+}
+
+func formatedString() {
+	const name = "Saul Goodman"
+	const openRate = 30.5
+
+	msg := fmt.Sprintf("Hi %s, your open rate is %.1f percent\n", name, openRate)
+
+	fmt.Print(msg)
 }
