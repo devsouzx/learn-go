@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello World!")
 
-	shortVariableDeclaration()
+	typeSizes()
 }
 
 func basicVariables() {
@@ -23,4 +23,12 @@ func shortVariableDeclaration() {
 	messageEnd := "years old!"
 	
 	fmt.Println(messageStart, age, messageEnd)
+}
+
+func typeSizes() {
+	accountAgeFloat := 2.6
+	
+	accountAgeInt := int64(accountAgeFloat)
+	
+	fmt.Println("Your account has existed for", accountAgeInt, "years")
 }
