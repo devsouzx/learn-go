@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello World!")
 
-	sameLineDeclaration()
+	constants()
 }
 
 func basicVariables() {
@@ -37,4 +37,12 @@ func sameLineDeclaration() {
 	averageOpenRate, displayMessage := .23, "is the average open rate of your messages"
 	
 	fmt.Println(averageOpenRate, displayMessage)
+}
+
+func constants() {
+	const premiumPlanName = "Premium Plan"
+	const basicPlanName = "Basic Plan"
+
+	fmt.Println("plan:", premiumPlanName)
+	fmt.Println("plan:", basicPlanName)
 }
