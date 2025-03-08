@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello World!")
 
-	typeSizes()
+	sameLineDeclaration()
 }
 
 func basicVariables() {
@@ -31,4 +31,10 @@ func typeSizes() {
 	accountAgeInt := int64(accountAgeFloat)
 	
 	fmt.Println("Your account has existed for", accountAgeInt, "years")
+}
+
+func sameLineDeclaration() {
+	averageOpenRate, displayMessage := .23, "is the average open rate of your messages"
+	
+	fmt.Println(averageOpenRate, displayMessage)
 }
