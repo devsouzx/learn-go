@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Hello World!")
 
-	constants()
+	computedConstants()
 }
 
 func basicVariables() {
@@ -45,4 +45,12 @@ func constants() {
 
 	fmt.Println("plan:", premiumPlanName)
 	fmt.Println("plan:", basicPlanName)
+}
+
+func computedConstants() {
+	const secondsInMinute = 60
+	const minutesInHour = 60
+	const secondsInHour = secondsInMinute * minutesInHour
+
+	fmt.Println("number of seconds in an hour:", secondsInHour)
 }
