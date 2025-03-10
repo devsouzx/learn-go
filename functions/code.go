@@ -20,6 +20,17 @@ func main() {
 	fmt.Println(yearsUntilEvents(18))
 
 	fmt.Println(reformat("hello", addExclamation))
+
+	printReports(
+		"Welcome to the Hotel California",
+		"Such a lovely place",
+		"Plenty of room at the Hotel California",
+	)
+
+	testing(true, true)
+	testing(false, true)
+	testing(true, false)
+	testing(false, false)
 }
 
 func test(s1 string, s2 string) {
@@ -93,4 +104,66 @@ func reformat(message string, formatter func(string) string) string {
 
 func addExclamation(message string) string {
 	return message + "!"
+}
+
+func printReports(intro, body, outro string) {
+	printCostReport(func(m string) int {
+		return len(m) * 2
+	}, intro)
+	printCostReport(func(m string) int {
+		return len(m) * 3
+	}, body)
+	printCostReport(func(m string) int {
+		return len(m) * 4
+	}, outro)
+}
+
+func printCostReport(costCalculator func(string) int, message string) {
+	cost := costCalculator(message)
+	fmt.Printf(`Message: "%s" Cost: %v cents`, message, cost)
+	fmt.Println()
+}
+
+func bootup() {
+	defer fmt.Println("TEXTIO BOOTUP DONE")
+	ok := connectToDB()
+	if !ok {
+		return
+	}
+	ok = connectToPaymentProvider()
+	if !ok {
+		return
+	}
+	fmt.Println("All systems ready!")
+}
+
+var shouldConnectToDB = true
+
+func connectToDB() bool {
+	fmt.Println("Connecting to database...")
+	if shouldConnectToDB {
+		fmt.Println("Connected!")
+		return true
+	}
+	fmt.Println("Connection failed")
+	return false
+}
+
+var shouldConnectToPaymentProvider = true
+
+func connectToPaymentProvider() bool {
+	fmt.Println("Connecting to payment provider...")
+	if shouldConnectToPaymentProvider {
+		fmt.Println("Connected!")
+		return true
+	}
+	fmt.Println("Connection failed")
+	return false
+}
+
+func testing(dbSuccess, paymentSuccess bool) {
+	shouldConnectToDB = dbSuccess
+	shouldConnectToPaymentProvider = paymentSuccess
+	bootup()
+	fmt.Println("====================================")
 }
