@@ -31,6 +31,18 @@ func main() {
 	testing(false, true)
 	testing(true, false)
 	testing(false, false)
+
+	harryPotterAggregator := concatter()
+	harryPotterAggregator("Mr.")
+	harryPotterAggregator("and")
+	harryPotterAggregator("Mrs.")
+	harryPotterAggregator("Dursley")
+	harryPotterAggregator("of")
+	harryPotterAggregator("number")
+	harryPotterAggregator("four,")
+	harryPotterAggregator("Privet")
+
+	fmt.Println(harryPotterAggregator("Drive"))
 }
 
 func test(s1 string, s2 string) {
@@ -166,4 +178,12 @@ func testing(dbSuccess, paymentSuccess bool) {
 	shouldConnectToPaymentProvider = paymentSuccess
 	bootup()
 	fmt.Println("====================================")
+}
+
+func concatter() func(string) string {
+	doc := ""
+	return func(word string) string {
+		doc += word + " "
+		return doc
+	}
 }
