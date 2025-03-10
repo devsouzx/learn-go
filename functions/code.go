@@ -14,6 +14,8 @@ func main() {
 	fmt.Println(getMonthlyPrice("basic"))
 	fmt.Println(getMonthlyPrice("premium"))
 	fmt.Println(getMonthlyPrice("enterprise"))
+
+	fmt.Println(monthlyBillIncrease(10, 100, 60))
 }
 
 func test(s1 string, s2 string) {
@@ -31,4 +33,15 @@ func getMonthlyPrice(tier string) int {
 	default:
 		return 0
 	}
+}
+
+func monthlyBillIncrease(costPerSend, numLastMonth, numThisMonth int) int {
+	lastMonthBill := getBillForMonth(costPerSend, numLastMonth)
+	thisMonthBill := getBillForMonth(costPerSend, numThisMonth)
+
+	return thisMonthBill - lastMonthBill
+}
+
+func getBillForMonth(costPerSend, messagesSent int) int {
+	return costPerSend * messagesSent
 }
