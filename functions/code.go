@@ -18,6 +18,8 @@ func main() {
 	fmt.Println(getProductMessage("basic"))
 
 	fmt.Println(yearsUntilEvents(18))
+
+	fmt.Println(reformat("hello", addExclamation))
 }
 
 func test(s1 string, s2 string) {
@@ -79,4 +81,16 @@ func yearsUntilEvents(age int) (yearsUntilAdult, yearsUntilDrinking, yearsUntilC
 		yearsUntilCarRental = 0
 	}
 	return
+}
+
+func reformat(message string, formatter func(string) string) string {
+	once := formatter(message)
+	twice := formatter(once)
+	thrice := formatter(twice)
+	prefix := "TEXTIO: "
+	return prefix + thrice
+}
+
+func addExclamation(message string) string {
+	return message + "!"
 }
