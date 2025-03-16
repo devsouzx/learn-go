@@ -141,14 +141,14 @@ type MessageResponse struct {
 	canSend bool
 }
 
-func (user User) sendMessage(messsage string, messageLength int) messageResponse {
-	messageResponse = {
+func (user User) sendMessage(messsage string, messageLength int) MessageResponse {
+	var messageResponse = MessageResponse{
 		message: messsage,
-		canSend: true
+		canSend: true,
 	}
 	if (messageLength > user.MessageCharLimit) {
 		messageResponse.canSend = false
-		message = ""
+		messageResponse.message = ""
 	}
-	return MessageResponse
+	return messageResponse
 }
