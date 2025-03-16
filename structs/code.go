@@ -15,6 +15,12 @@ type car struct {
 	}
 }
 
+// Embedded Structs
+type truck struct {
+	car 
+	bedSize int
+}
+
 type wheel struct {
 	radius   int
 	material string
@@ -47,6 +53,17 @@ func main() {
 		model: "Camry",
 	}
 	fmt.Println(myCar)
+
+	lanesTruck := truck{
+		bedSize: 10,
+		car: car{
+			brand: "Toyota",
+    		model: "Camry",
+		},
+	}
+
+	fmt.Println(lanesTruck.brand)
+	fmt.Println(lanesTruck.model) 
 }
 
 func canSendMessage(mToSend messageToSend) bool {
