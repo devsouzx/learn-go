@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type car struct {
 	brand      string
@@ -67,6 +69,8 @@ func main() {
 	
 	fmt.Println(r.area())
 	fmt.Println(authInfo.data())
+
+	fmt.Println(newUser("Joao", "basic"))
 }
 
 func canSendMessage(mToSend messageToSend) bool {
@@ -109,4 +113,29 @@ var authInfo = authenticationInfo{
 
 func (authInfo authenticationInfo) data() string {
 	return "Authorization: Basic " + authInfo.username + ":" + authInfo.password
+}
+
+type User struct {
+	Membership
+	Name string
+}
+
+type Membership struct {
+	Type string
+	messageCharLimit int
+}
+
+func newUser(name string, membershipType string) User {
+	user := User{
+		Name: name,
+		Membership: Membership{
+			Type: membershipType,
+		},
+	}
+	if (membershipType == "premium") {
+		user.messageCharLimit = 1000
+	} else {
+		user.messageCharLimit = 100
+	}
+	return user
 }
