@@ -63,7 +63,10 @@ func main() {
 	}
 
 	fmt.Println(lanesTruck.brand)
-	fmt.Println(lanesTruck.model) 
+	fmt.Println(lanesTruck.model)
+	
+	fmt.Println(r.area())
+	fmt.Println(authInfo.data())
 }
 
 func canSendMessage(mToSend messageToSend) bool {
@@ -77,4 +80,33 @@ func canSendMessage(mToSend messageToSend) bool {
 		}
 	}
 	return false
+}
+
+// Struct Methods
+func (r rect) area() int {
+	return r.width * r.height
+}
+
+var r = rect{
+	width: 5,
+	height: 10,
+}
+
+type rect struct {
+	width int
+	height int
+}
+
+type authenticationInfo struct {
+	username string
+	password string
+}
+
+var authInfo = authenticationInfo{
+	username: "joao",
+	password: "blabla",
+}
+
+func (authInfo authenticationInfo) data() string {
+	return "Authorization: Basic " + authInfo.username + ":" + authInfo.password
 }
