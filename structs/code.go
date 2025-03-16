@@ -115,6 +115,7 @@ func (authInfo authenticationInfo) data() string {
 	return "Authorization: Basic " + authInfo.username + ":" + authInfo.password
 }
 
+// update user excercise
 type User struct {
 	Membership
 	Name string
@@ -122,20 +123,32 @@ type User struct {
 
 type Membership struct {
 	Type string
-	messageCharLimit int
+	MessageCharLimit int
 }
 
 func newUser(name string, membershipType string) User {
-	user := User{
-		Name: name,
-		Membership: Membership{
-			Type: membershipType,
-		},
-	}
-	if (membershipType == "premium") {
-		user.messageCharLimit = 1000
+	membership := Membership{Type: membershipType}
+	if membershipType == "premium" {
+		membership.MessageCharLimit = 1000
 	} else {
-		user.messageCharLimit = 100
+		membership.MessageCharLimit = 100
 	}
-	return user
+	return User{Name: name, Membership: membership}
+}
+
+type MessageResponse struct {
+	message string
+	canSend bool
+}
+
+func (user User) sendMessage(messsage string, messageLength int) messageResponse {
+	messageResponse = {
+		message: messsage,
+		canSend: true
+	}
+	if (messageLength > user.MessageCharLimit) {
+		messageResponse.canSend = false
+		message = ""
+	}
+	return MessageResponse
 }
