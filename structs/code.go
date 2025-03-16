@@ -9,6 +9,10 @@ type car struct {
 	miliage    int
 	frontWheel wheel
 	backWheel  wheel
+	wheel struct {
+		radius   int
+		material string
+	}
 }
 
 type wheel struct {
@@ -33,6 +37,16 @@ func main() {
 	message.sender.number = 4
 	message.recipient.number = 8
 	fmt.Println(canSendMessage(message))
+
+	// Anonymous Structs
+	myCar := struct {
+		brand string
+		model string
+	} {
+		brand: "Toyota",
+		model: "Camry",
+	}
+	fmt.Println(myCar)
 }
 
 func canSendMessage(mToSend messageToSend) bool {
