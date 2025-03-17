@@ -10,6 +10,14 @@ func main() {
 	fmt.Println(bulkSend(21))
 
 	fmt.Println(maxMessages(10.0))
+
+	// while/for
+	plantHeight := 1
+	for plantHeight < 5 {
+		fmt.Println("still growing! current height:", plantHeight)
+		plantHeight++
+	}
+	fmt.Println("plant has grown to ", plantHeight, "inches")
 }
 
 func bulkSend(numMessages int) float64 {
