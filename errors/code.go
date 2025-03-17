@@ -1,10 +1,13 @@
 package main
 
-import ("fmt")
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 	fmt.Println(sendSMSToCouple("rere", "eeeee"))
-	fmt.Println(divide(6, 2))
+	fmt.Println(divide2(6, 2))
 }
 
 func sendSMSToCouple(msgToCustomer, msgToSpouse string) (int, error) {
@@ -41,4 +44,11 @@ func divide(dividend, divisor float64) (float64, error) {
 		return 0, divideError{dividend: dividend}
 	}
 	return dividend / divisor, nil
+}
+
+func divide2(x, y float64) (float64, error) {
+	if y == 0 {
+		return 0.0, errors.New("no dividing by 0")
+	}
+	return x / y, nil
 }
