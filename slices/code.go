@@ -73,6 +73,19 @@ func main() {
 	fmt.Println(sliceapp)
 	slice := append(sliceapp, 6, 7, 8)
 	fmt.Println(slice)
+
+	// range
+	fruits := []string{
+		"banana",
+		"apple",
+		"orange",
+	}
+	for i, fruit := range fruits {
+		fmt.Println(i, fruit)
+	}
+
+	//  slice of slice/ matrix
+	fmt.Println(createMatrix(5, 5))
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
@@ -110,4 +123,16 @@ func getMessageCosts(messages []string) []float64 {
 		costs[i] = cost
 	}
 	return costs
+}
+
+func createMatrix(rows, cols int) [][]int {
+	matrix := make([][]int, 0)
+	for i := 0; i < rows; i++ {
+		row := make([]int, 0)
+		for j := 0; j < cols; j++ {
+			row = append(row, i*j)
+		}
+		matrix = append(matrix, row)
+	}
+	return matrix
 }
