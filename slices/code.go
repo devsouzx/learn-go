@@ -86,6 +86,17 @@ func main() {
 
 	//  slice of slice/ matrix
 	fmt.Println(createMatrix(5, 5))
+
+	// maps
+	ages := make(map[string]int)
+	ages["João"] = 17
+	fmt.Println(ages)
+
+	ages = map[string]int{
+		"John": 37,
+  		"Mary": 21,
+	}
+	fmt.Println(len(ages))
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
