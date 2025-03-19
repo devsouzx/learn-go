@@ -67,6 +67,12 @@ func main() {
 			"gdhjsklaskd",
 		},
 	))
+
+	// append
+	sliceapp := []int{2, 3, 4, 5}
+	fmt.Println(sliceapp)
+	slice := append(sliceapp, 6, 7, 8)
+	fmt.Println(slice)
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
