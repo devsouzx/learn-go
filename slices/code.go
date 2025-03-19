@@ -9,6 +9,15 @@ func main() {
 
 	fmt.Println(myInts, primes)
 	fmt.Println(getMessageWithRetries("tres", "quatro", "cincore"))
+
+	// slices
+	mySlices := primes[2:4]
+	fmt.Println(mySlices)
+	lowIndexSlice := primes[3:]
+	fmt.Println(lowIndexSlice)
+	highIndexSlice := primes[:3]
+	fmt.Println(highIndexSlice)
+	fmt.Println(primes[:])
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
