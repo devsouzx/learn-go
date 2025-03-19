@@ -46,6 +46,27 @@ func main() {
 			"sdhgghsvdg",
 		},
 	))
+
+	// make
+	// func make([]T, len, cap) []T
+	mySlice := make([]int, 5, 10)
+	fmt.Println(mySlice)
+
+	// the capacity argument is usually omitted and defaults to the length
+	mySlice1 := make([]int, 5)
+	fmt.Println(mySlice1)
+
+	mySlice2 := []string{"I", "love", "go"}
+	fmt.Println(len(mySlice2))
+	fmt.Println(cap(mySlice2))
+
+	fmt.Println(getMessageCosts(
+		[]string{
+			"qwertyu",
+			"fghddjksdd",
+			"gdhjsklaskd",
+		},
+	))
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
@@ -73,4 +94,14 @@ func getMessageWithRetriesForPlan(plan string, messages [3]string) ([]string, er
 		return messages[0:2], nil
 	}
 	return nil, errors.New("unsupported plan")
+}
+
+func getMessageCosts(messages []string) []float64 {
+	costs := make([]float64, len(messages))
+	for i := 0; i < len(messages); i++ {
+		message := messages[i]
+		cost := float64(len(message)) * 0.01
+		costs[i] = cost
+	}
+	return costs
 }
