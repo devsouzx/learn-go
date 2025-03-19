@@ -97,6 +97,22 @@ func main() {
   		"Mary": 21,
 	}
 	fmt.Println(len(ages))
+
+	// Mutations
+	//Insert an Element
+	m := make(map[string]int)
+	m["key"] = 3
+
+	// Get an Element
+	elem := m["key"]
+	fmt.Println(elem)
+
+	// Delete an Element
+	delete(m, "key")
+
+	// heck If a Key Exists
+	elem, ok := m["key"]
+	fmt.Println(ok)
 }
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int) {
@@ -146,4 +162,20 @@ func createMatrix(rows, cols int) [][]int {
 		matrix = append(matrix, row)
 	}
 	return matrix
+}
+
+func getUserMap(names []string, phoneNumbers []int) (map[string]user, error) {
+	users := make(map[string]user)
+	for i := 0; i < len(names); i++{
+		users[names[i]] = user{
+			name: names[i],
+			phoneNumber: phoneNumbers[i],
+		}
+	}
+	return users, nil
+}
+
+type user struct {
+	name        string
+	phoneNumber int
 }
